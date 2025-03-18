@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    function getCEP() {
+        cep = document.getElementById("cep").value;
+        fetch(`/cep/${cep}`)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                document.getElementById('cepResult').innerText = JSON.stringify(data);
+            })
+            .catch (error => {
+                document.getElementById('cepResult').innerText = "CEP não encontrado"
+            });
+    }
+</script>
+<body>
+    <h1>Página home</h1>
+    <br>
+    <a href="/perfil">Perfil</a>
+    <br>
+    <br>
+    <label for="cep">Verificar CEP</label>
+    <input type="text" id="cep">
+    <br>
+    <br>
+    <button onclick="getCEP()">Consultar cep</button>
+    <br>
+    <br>
+    <p id="cepResult"></p>
+</body>
+</html>
