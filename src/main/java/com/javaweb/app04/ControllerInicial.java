@@ -26,6 +26,7 @@ public class ControllerInicial {
 
     @RequestMapping("/cep/{cep}")
     @ResponseBody
+    // Um pouco a mais do que precisava mas eu estava relembrando o que aprendi sobre requisições com API usando Java
     public String cep(@PathVariable String cep) {
         try {
             String url = "https://viacep.com.br/ws/" + cep + "/json/";
